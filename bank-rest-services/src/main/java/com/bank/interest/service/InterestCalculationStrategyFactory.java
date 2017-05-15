@@ -43,11 +43,7 @@ public class InterestCalculationStrategyFactory {
      * @return the interest calculation strategy
      */
     public Optional<InterestCalculationStrategy> getInterestCalculationStrategy(InterestType interestType) {
-   /*   switch (interestType) {
-            case "SIMPLE": return simpleInterestCalculator;
-            case "COMPOUND": return compoundInterestCalculator;
-            default:return null;
-        }*/
+  
       Assert.notNull(interestType, "Parameter interestType cannot be null.");
       switch (interestType) {
           case SIMPLE: return Optional.of(getSimpleInterestCalculator());

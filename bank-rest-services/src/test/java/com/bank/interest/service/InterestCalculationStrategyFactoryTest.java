@@ -61,10 +61,10 @@ public class InterestCalculationStrategyFactoryTest {
 	}
 	
 	/**
-	 * Test get interest calculation strategy for simple annual interest calculator.
+	 * Test get interest calculation strategy for simple interest calculator.
 	 */
 	@Test
-	public void testGetInterestCalculationStrategyForSimpleAnnualInterestCalculator() {
+	public void testGetInterestCalculationStrategyForSimpleInterestCalculator() {
 		Optional<InterestCalculationStrategy> interestCalculationStrategy = factory.getInterestCalculationStrategy(InterestType.SIMPLE);
 		Assert.assertTrue(interestCalculationStrategy.isPresent());
 		Assert.assertTrue(interestCalculationStrategy.get().getClass().getName().contains("SimpleInterestCalculator"));
@@ -72,10 +72,10 @@ public class InterestCalculationStrategyFactoryTest {
 	}
 	
 	/**
-	 * Test get interest calculation strategy for simple compound interest calculator.
+	 * Test get interest calculation strategy for compound interest calculator.
 	 */
 	@Test
-	public void testGetInterestCalculationStrategyForSimpleCompoundInterestCalculator() {
+	public void testGetInterestCalculationStrategyForCompoundInterestCalculator() {
 		Optional<InterestCalculationStrategy> interestCalculationStrategy = factory.getInterestCalculationStrategy(InterestType.COMPOUND);
 		Assert.assertTrue(interestCalculationStrategy.isPresent());
 		Assert.assertTrue(interestCalculationStrategy.get().getClass().getName().contains("CompoundInterestCalculator"));

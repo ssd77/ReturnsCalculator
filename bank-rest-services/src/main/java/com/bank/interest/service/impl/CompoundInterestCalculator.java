@@ -4,6 +4,7 @@
 package com.bank.interest.service.impl;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import org.springframework.stereotype.Component;
 
@@ -21,21 +22,8 @@ public class CompoundInterestCalculator implements InterestCalculationStrategy {
 	}	
 	
 	public BigDecimal calculateInterest(InterestRequest request) {		
-		return new BigDecimal(request.getPrincipal() * Math.pow((1 + request.getInterestRate()/100),request.getPeriods()));
-	}
-	
-	/*public Float calculateSimpleInterest(InterestRequest request){
-    	Float principal = request.getPrincipal();
-    	Float rate = request.getRate();
-    	Float time = request.getTime();
-    	return (principal*rate*time)/100;
-    }
-    
-    public Float calculateCompoundInterest(InterestRequest request){
-    	Float principal = request.getPrincipal();
-    	Float rate = request.getRate();
-    	Float time = request.getTime();
-    	return new Float(principal * Math.pow((1 + rate/100),time));
-    }*/
+		BigDecimal returnIntrest = new BigDecimal(request.getPrincipal() * Math.pow((1 + request.getInterestRate()/100),request.getPeriods()));
+		return returnIntrest.setScale(2, RoundingMode.HALF_UP);
+	}	
 
 }

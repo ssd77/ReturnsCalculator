@@ -17,16 +17,10 @@ public class SimpleInterestCalculatorTest {
 	private SimpleInterestCalculator simpleInterestCalculator;
 	private InterestRequest interestRequest;
 
-	/**
-	 * Sets the up.
-	 *
-	 * @throws Exception the exception
-	 */
 	@Before
 	public void setUp() throws Exception {
 		simpleInterestCalculator = new SimpleInterestCalculator();
-		interestRequest = new InterestRequest();
-		interestRequest.setInterestType(InterestType.SIMPLE.name());
+		interestRequest = new InterestRequest();		
 		interestRequest.setPrincipal(1000.0d);
 		interestRequest.setInterestRate(10d);
 		interestRequest.setPeriods(20d);
@@ -38,14 +32,8 @@ public class SimpleInterestCalculatorTest {
 	 */
 	@Test
 	public void testCalculateSimpleInterest() {
+		interestRequest.setInterestType(InterestType.SIMPLE.name());
 		BigDecimal calculateInterest = simpleInterestCalculator.calculateInterest(interestRequest);
-		Assert.assertEquals(calculateInterest, new BigDecimal(2000));
-	}
-	
-	@Test
-	public void testCalculateInterestFalse() {
-		BigDecimal calculateInterest = simpleInterestCalculator.calculateInterest(interestRequest);
-		Assert.assertFalse(calculateInterest.toString().equals("1000"));
-	}
-
+		Assert.assertEquals(calculateInterest, new BigDecimal(2000).setScale(2));
+	}	
 }
